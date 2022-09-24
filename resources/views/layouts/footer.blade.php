@@ -1,10 +1,3 @@
- <!-- Lock -->
- <section id="lock">
-            <h2>SERVING MORE THAN JUST BURGERS SINCE 1998</h2>
-            <p>Check out our opening hours and location address below.</p>
-        </section>
-
-  
 
         <!-- Footer -->
         <footer>
@@ -38,7 +31,7 @@
 
                     <div class="col-lg-4 col-sm-4 col-xs-12 pull-right">
                         <div class="basic_info">
-                            <a href=""><img class="footer_logo" src="images/footer_logo.png" alt="Burger" /></a>
+                            <a href=""><img class="footer_logo" src="{{asset('images/footer_logo.png')}}" alt="Burger" /></a>
 
                             <ul class="list-inline social">
                                 <li><a href="" class="fa fa-facebook"></a></li>

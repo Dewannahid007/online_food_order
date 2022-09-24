@@ -14,7 +14,7 @@
         <!-- Animate -->
         <link rel="stylesheet" href="{{asset('css/animate.css')}}">
         <!-- Bootsnav -->
-        <link rel="stylesheet" href="{{asset('css/bootsnav.css')}}">
+        <link rel="stylesheet" href="{{('css/bootsnav.css')}}">
         <!-- Color style -->
         <link rel="stylesheet" href="{{asset('css/color.css')}}">
 
@@ -59,7 +59,7 @@
 
                 <!-- Start Header Navigation -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><img src="images/logo.png" class="logo" alt=""></a>
+                    <a class="navbar-brand" href="#"><img src="{{asset('images/logo.png')}}" class="logo" alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
             </div>   
@@ -98,7 +98,7 @@
                                     <p>*Based on pre-cooked patty weight.</p>							
                                 </div>
                                 <div class="stamp">
-                                    <img src="images/stamp.png" alt="" />
+                                    <img src="{{asset('images/stamp.png')}" alt="" />
                                 </div>
                             </div>
                         </div>
