@@ -14,14 +14,16 @@
       </tr>
 
 
+      @if(Session::has('cart'))
+      @foreach(Session::get('cart') as $product)
    
           <tr>
             <td>
               <div class="product-info">
-                <img src="{{asset('images/')}}">
+                <img src="{{asset('images/'.$product['image'])}} ">
                 <div>
-                  <p>Sandwitch</p>
-                  <small><span>$</span>39.99</small>
+                  <p>{{$product['name']}}</p>
+                  <small><span>$</span> {{$product['price']}}</small>
                   <br>
                   <form> 
                     <input type="submit" name="remove_btn" class="remove-btn" value="remove">
@@ -33,24 +35,30 @@
             <td>
               <form>
                
-                <input type="number" name="quantity" value="1">
+                <input type="number" name="quantity" value="{{$product['quantity']}}">
                 <input type="submit" value="edit" class="edit-btn" name="edit_product_quantity_btn">
               </form>
             </td>
-
+ 
             <td>
-              <span class="product-price">$199</span>
+              <span class="product-price">{{$product['price'] * $product['quantity']}}</span>
             </td>
           </tr>
+          @endforeach
+          @endif
     </table>
 
 
     <div class="cart-total">
       <table>
+      @if(session::has('cart'))
         <tr>
           <td>Total</td>
-          <td>$199</td>
+          @if(session::has('total'))
+          <td>${{session::get('total')}}</td>
+          @endif
         </tr>
+        @endif
       </table>
     </div>
     
