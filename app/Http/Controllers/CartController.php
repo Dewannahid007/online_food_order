@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -102,6 +103,119 @@ function calculateTotalCart(Request $request){
     }
     $request->session()->put('total',$total_price);
     $request->session()->put('quantity',$total_quantity);
+
+}
+public function remove_from_cart(Request $request){
+    if($request->session()->has('cart')){
+
+    $id=$request->input('id');
+    $cart=$request->session()->get('cart');
+    unset($cart[$id]);
+
+    $request->session()->put('cart',$cart);
+    $this->calculateTotalCart($request);
+
+
+    return view('cart');
+
+    }
+
+}
+public function edit_product_quantity(Request $request){
+    if($request->session()->has('cart')){
+        $product_id=$request->input('id');
+        $product_quantity=$request->input('quantity');
+
+        if($request->has('decrease_product_quantity_btn')){
+            $product_quantity= $product_quantity -1;
+
+        }
+        else if($request->has('increase_product_quantity_btn')){
+            $product_quantity= $product_quantity +1;
+
+        }
+        else{
+
+        }
+        if($product_quantity<=0){
+            $this->remove_from_cart($request);
+        }
+
+        $cart=$request->session()->get('cart');
+        if(array_key_exists($product_id,$cart)){
+            $cart[$product_id] ['quantity'] = $product_quantity;
+            $request->session()->put('cart',$cart);
+
+            $this->calculateTotalCart($request);
+
+        }
+
+
+    }
+    return view('cart');
+
+}
+public function checkout(){
+
+
+    return view('checkout');
+}
+
+public function place_order(Request $request){
+    if($request->session()->has('cart')){
+        $name=$request->input('name');
+        $email=$request->input('email');
+        $phone=$request->input('phone');
+        $city=$request->input('city');
+        $address=$request->input('address');
+
+        $cost= $request->session()->get('total');
+        $status="Not Paid";
+        $data= date('y-m-d');
+
+        $cart= $request->session()->get('cart');
+        $order_id= DB::table('orders')->insertGetId([
+            'name'=>$name,
+            'email'=>$email,
+            'phone'=>$phone,
+            'city'=>$city,
+            'address'=>$address,
+            'cost'=>$cost,
+            'status'=>$status,
+            'date'=>$data
+
+         ],'id');
+         foreach($cart as $id=> $product){
+            $product = $cart[$id];
+            $product_id = $product['id'];
+            $product_name =$product['name'];
+            $product_price = $product['price'];
+            $product_quantity = $product['quantity'];
+            $product_image = $product['image'];
+
+            DB::table('order_items')->insert([
+                'order_id'=>$order_id,
+                'product_id'=>$product_id,
+                'product_name'=>$product_name,
+                'product_price'=>$product_price,
+                'product_quantity'=>$product_quantity,
+                'product_image'=>$product_image,
+                'order_date'=>$data
+
+
+            ]);
+
+         }
+
+         $request->session()->put('order_id',$order_id);
+         return view('payment');
+
+
+
+    }
+    else{
+        return redirect('/');
+    }
 
 }
 

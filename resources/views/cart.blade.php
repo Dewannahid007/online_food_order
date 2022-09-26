@@ -25,7 +25,9 @@
                   <p>{{$product['name']}}</p>
                   <small><span>$</span> {{$product['price']}}</small>
                   <br>
-                  <form> 
+                  <form method="POST" action="{{route('remove_from_cart')}}">
+                    @csrf
+                     <input type="hidden" name="id" value="{{$product['id']}}">
                     <input type="submit" name="remove_btn" class="remove-btn" value="remove">
                   </form>
                 </div>
@@ -33,10 +35,12 @@
             </td>
 
             <td>
-              <form>
-               
-                <input type="number" name="quantity" value="{{$product['quantity']}}">
-                <input type="submit" value="edit" class="edit-btn" name="edit_product_quantity_btn">
+              <form action="{{route('edit_product_quantity')}}" method="POST">
+                @csrf
+              <input type="submit" value="-" class="edit-btn" name="decrease_product_quantity_btn">
+              <input type="hidden" name="id" value="{{$product['id']}}" >
+              <input type="text" name="quantity" value="{{$product['quantity']}}" readonly>
+             <input type="submit" value="+" class="edit-btn" name="increase_product_quantity_btn">
               </form>
             </td>
  
@@ -64,9 +68,13 @@
     
 
     <div class="checkout-container">
-      <form>
+      @if(session::has('total'))
+      @if(session::get('total') != null)
+      <form method="GET" action="{{route('checkout')}}">
         <input type="submit" class="btn checkout-btn" value="Checkout" name="">
       </form>
+      @endif
+      @endif
     </div>
 
   </section>
