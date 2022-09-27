@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
@@ -174,6 +175,16 @@ public function place_order(Request $request){
         $data= date('y-m-d h:i:s');
 
         $cart= $request->session()->get('cart');
+
+        if(Auth::check()){
+
+            $user_id=Auth::id();
+
+        }
+        else{
+            $user_id=0;
+
+        }
         $order_id= DB::table('orders')->insertGetId([
             'name'=>$name,
             'email'=>$email,
@@ -182,7 +193,8 @@ public function place_order(Request $request){
             'address'=>$address,
             'cost'=>$cost,
             'status'=>$status,
-            'date'=>$data
+            'date'=>$data,
+            'user_id'=>$user_id
 
          ],'id');
          foreach($cart as $id=> $product){
@@ -200,7 +212,7 @@ public function place_order(Request $request){
                 'product_price'=>$product_price,
                 'product_quantity'=>$product_quantity,
                 'product_image'=>$product_image,
-                'order_date'=>$data
+                'order_date'=>$data,
 
 
             ]);

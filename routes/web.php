@@ -52,3 +52,13 @@ route::get('/complete_payment',[PaymentController::class,'complete_payment'])->n
 route::get('/thank_you',[PaymentController::class,'thank_you'])->name('thank_you');
 
 
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
