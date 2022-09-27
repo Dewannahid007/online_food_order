@@ -171,7 +171,7 @@ public function place_order(Request $request){
 
         $cost= $request->session()->get('total');
         $status="Not Paid";
-        $data= date('y-m-d');
+        $data= date('y-m-d h:i:s');
 
         $cart= $request->session()->get('cart');
         $order_id= DB::table('orders')->insertGetId([
