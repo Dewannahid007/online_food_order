@@ -70,11 +70,23 @@
                 <div class="widget">
                     <h6 class="title">Our Menu</h6>
                     <ul class="link">
-                       <li><a href="#">Burgers</a></li>
-                        <li><a href="#">Chicken Sandwishes</a></li>
-                          <li><a href="#">Breakfast</a></li>
-                        <li><a href="#">Beverages</a></li>
-                        <li><a href="#">Your Cart</a></li>
+                       <li><a href="{{route('category',['category'=>'Burgers'])}}">Burgers</a></li>
+                        <li><a href="{{route('category',['category'=>'snacks'])}}">Snacks</a></li>
+                          <li><a href="{{route('category',['category'=>'breakfast'])}}">Breakfast</a></li>
+                        <li><a href="{{route('category',['category'=>'Beverage'])}}">Beverages</a></li>
+                        <li><a href="{{route('category',['category'=>'Pasta'])}}">Pasta</a></li>
+                        <li><a href="{{route('cart')}}">Your Cart</a></li>
+
+                        
+                        @if(Auth::check())
+                        <li> <a href="{{route('login')}}">Profile</a></li>
+                        <li><a href="{{route('user_orders')}}">Your Orders</a></li>
+
+                        @else
+                        <li> <a href="{{route('login')}}">Login</a></li>
+
+                        @endif
+
 
                     </ul>
                 </div>

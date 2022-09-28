@@ -19,12 +19,12 @@
                     <div class="col-lg-3 col-sm-4 col-xs-12 col-lg-offset-1 pull-right">
                         <div class="contact_us">
                             <h4>Contact Us</h4>
-                            <a href="">info@junkyburget.com</a>
+                            <a href="">dewan.tajmul@gmail.com</a>
 
                             <address>
-                                Jalan Awan Hijau, Taman OUG<br />
-                                58200 Kuala Lumpur <br />
-                                Malaysia <br />
+                                Kaderabad Housing, Mohammadpur<br />
+                                1207, Dhaka <br />
+                                Bangladesh <br />
                             </address>
                         </div>
                     </div>
@@ -34,8 +34,8 @@
                             <a href=""><img class="footer_logo" src="{{asset('images/footer_logo.png')}}" alt="Burger" /></a>
 
                             <ul class="list-inline social">
-                                <li><a href="" class="fa fa-facebook"></a></li>
-                                <li><a href="" class="fa fa-twitter"></a></li>
+                                <li><a href="https://www.facebook.com/dewantajmulislam.nahid" class="fa fa-facebook"></a></li>
+                                <li><a href="https://twitter.com/Dewan_nahid007" class="fa fa-twitter"></a></li>
                                 <li><a href="" class="fa fa-instagram"></a></li>
                             </ul>
 
@@ -45,7 +45,7 @@
                                     <i class="fa fa-heart"></i>
                                     by 
                                     <a target="_blank" href="http://bootstrapthemes.co">Bootstrap Themes</a> <br /> 
-                                    2016. All Rights Reserved
+                                    2022. All Rights Reserved
                                 </p>
                             </div>					
                         </div>

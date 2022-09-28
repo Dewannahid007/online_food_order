@@ -9,11 +9,24 @@
       </div>
 
       <ul class="filters_menu">
-        <li class="active" data-filter="*">All</li>
+        <li  data-filter="*">All</li>
+        <a href="{{route('category',['category'=>'burgers'])}}">
         <li data-filter=".burger">Burger</li>
+        </a>
+        <a href="{{route('category',['category'=>'breakfast'])}}">
         <li data-filter=".pizza">Breakfast</li>
+        </a>
+        <a href="{{route('category',['category'=>'Beverage'])}}">
         <li data-filter=".pasta">Beverages</li>
-        <li data-filter=".fries">Chicken & Sandwiches</li>
+        </a>
+        <a href="{{route('category',['category'=>'snacks'])}}">
+        <li data-filter=".fries">Snacks</li>
+        </a>
+        <a href="{{route('category',['category'=>'Pasta'])}}">
+        <li data-filter=".fries">Pasta</li>
+        </a>
+        
+
       </ul>
 
       <div class="filters-content">
@@ -114,11 +127,6 @@
           </div>
           @endforeach
         </div>
-      </div>
-      <div class="btn-box">
-        <a href="">
-          View More
-        </a>
       </div>
     </div>
   </section>

@@ -50,7 +50,7 @@
                         <div class="menu">
                             <div class="inner_content">
                                 <span class="flaticon flaticon-burger"></span>
-                                <h2>menu</h2>
+                                <h2> <a href="{{route('products')}}"> menu</a> </h2>
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                         <div class="drinks">
                             <div class="inner_content">
                                 <span class="flaticon flaticon-drink"></span>
-                                <h2>drinks</h2>
+                                <h2> <a href="{{route('category',['category'=>'Beverage'])}}"> drinks </a></h2>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                         <div class="sides">
                             <div class="inner_content">
                                 <span class="flaticon flaticon-food"></span>
-                                <h2>sides</h2>
+                                <h2> <a href="{{route('category',['category'=>'breakfast'])}}"> Break<br>fast </a></h2>
                             </div>
                         </div>
                     </div>

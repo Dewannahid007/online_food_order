@@ -25,6 +25,8 @@ Route::get('/about',function(){
 });
 
 Route::get('/products',[ProjectController::class,'products'])->name('products');
+Route::get('/products/{category}',[ProjectController::class,'category'])->name('category');
+
 Route::get('/single_product/{id}',[ProjectController::class,'single_product'])->name('single_product');
 route::get('/user_orders',[ProjectController::class,'user_orders'])->name('user_orders');
 route::get('/user_order_details/{id}',[ProjectController::class,'user_order_details'])->name('user_order_details');

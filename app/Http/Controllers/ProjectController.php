@@ -46,6 +46,12 @@ class ProjectController extends Controller
         }
         return redirect('/');
     }
+    function category(Request $request,$category){
+        $products= DB::table('products')->where('category',$category)->get();
+        return view('products',['products'=>$products]);
+
+
+    }
 
     
 
