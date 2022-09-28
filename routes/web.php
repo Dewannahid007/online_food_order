@@ -26,6 +26,10 @@ Route::get('/about',function(){
 
 Route::get('/products',[ProjectController::class,'products'])->name('products');
 Route::get('/single_product/{id}',[ProjectController::class,'single_product'])->name('single_product');
+route::get('/user_orders',[ProjectController::class,'user_orders'])->name('user_orders');
+route::get('/user_order_details/{id}',[ProjectController::class,'user_order_details'])->name('user_order_details');
+ 
+
 Route::get('/cart',[CartController::class,'cart'])->name('cart');
 Route::post('/add_to_cart',[CartController::class,'add_to_cart'])->name('add_to_cart');
 Route::get('/add_to_cart',function(){
@@ -50,7 +54,6 @@ Route::get('/payment',[PaymentController::class,'payment'])->name('payment');
 Route::get('/verify_payment/{transaction_id}',[PaymentController::class,'verify_payment'])->name('verify_payment');
 route::get('/complete_payment',[PaymentController::class,'complete_payment'])->name('complete_payment');
 route::get('/thank_you',[PaymentController::class,'thank_you'])->name('thank_you');
-
 
 
 Route::middleware([
